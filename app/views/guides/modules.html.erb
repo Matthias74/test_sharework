@@ -1,0 +1,25 @@
+<div class="guide">
+  <%= @guide.title %>
+</div>
+
+<div class="text-modules">
+  <% if @guide.texts.any? %>
+    <% @guide.texts.each do |text|%>
+    <p>
+      <%= text.title %>
+      <%= text.paragraph %>
+    </p>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="text-module-form">
+  <%= simple_form_for([@text]) do |f|%>
+    <p>Titre</p>
+    <%= f.input :title, label: false %>
+    <p>Paragraphe</p>
+    <%= f.input :paragraph, label: false %>
+    <%= hidden_field_tag(:guide, @guide.id) %>
+    <%= f.button :submit, 'toto' %>
+  <% end %>
+</div>

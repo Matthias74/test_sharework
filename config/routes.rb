@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   get 'texts/create'
 
   root to: 'guides#new'
-  resources :guides, only: [ :create ]
+  resources :guides, only: [ :create ] do
+    member do                             # member => restaurant id in URL
+      get 'modules', to: "guides#modules"  # RestaurantsController#chef
+    end
+  end
 
   resources :texts, only: [ :create ]
 
