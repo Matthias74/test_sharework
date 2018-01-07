@@ -14,6 +14,8 @@
       <p>description</p>
       <%= f.input :description, label: false %>
       <%= hidden_field_tag(:guide, @guide.id) %>
+      <%= f.input :file %>
+      <%= f.input :file_cache, as: :hidden %>
       <%= f.button :submit, 'Créer Document' %>
     <% end %>
   </div>

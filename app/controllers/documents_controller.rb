@@ -19,6 +19,6 @@ class DocumentsController < ApplicationController
   private
 
   def document_params
-    params.require(:document).permit(:title, :description)
+    params.require(:document).permit(:title, :description, :file, :file_cache)
   end
 end
