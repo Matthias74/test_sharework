@@ -15,9 +15,20 @@
     </div>
 
     <div class="document-module">
+
+      <% if @guide.documents.count >= 1 %>
+        <% @guide.documents.each do |document| %>
+        <div class="document-module-instance box-shadow">
+          <h1>toto</h1>
+          <p><%= document.title %></p>
+          <%= document.description %>
+        </div>
+        <% end %>
+      <% end %>
+
       <div class="document-module-button box-shadow margin-top-30">
         <h3 class="padding-bottom-20">Module document</h3>
-        <button type="button" class="main-cta">Ajouter un document</button>
+        <button type="button" class="main-cta" id="document-creation">Ajouter un document</button>
       </div>
 
       <div class="document-module-form box-shadow margin-top-30">
@@ -30,7 +41,7 @@
           <%= hidden_field_tag(:guide, @guide.id) %>
           <%= f.input :file %>
           <%= f.input :file_cache, as: :hidden %>
-          <%= f.button :submit, 'Créer Document' %>
+          <%= f.button :submit, 'Créer Document', class: "main-cta" %>
         <% end %>
       </div>
       <div class="document-modules">
@@ -38,6 +49,8 @@
       </div>
     </div>
 
+
+    <h3>Création d'un texte</h3>
     <div class="text-modules box-shadow">
       <% if @guide.texts.any? %>
         <% @guide.texts.each do |text|%>
@@ -48,7 +61,6 @@
         <% end %>
       <% end %>
     </div>
-    <h3>Création d'un texte</h3>
     <div class="text-module-form box-shadow">
       <%= simple_form_for([@text]) do |f|%>
         <p>Titre</p>
@@ -63,3 +75,21 @@
     <%= link_to "Voir le guide", guide_path(@guide), class: 'btn btn-primary' %>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+    <script>
+
+      var path = window.location.pathname
+
+      if(path != "/documents") {
+        $( ".document-module-form" ).hide();
+        $( "#document-creation" ).click(function() {
+          $( ".document-module-button" ).hide();
+          $( ".document-module-form" ).show();
+        });
+      }
+      else {
+      	$( ".document-module-form" ).show();
+      }
+    </script>
+<% end %>
