@@ -1,0 +1,9 @@
+<div class="new-guide">
+  <%= simple_form_for(@guide) do |f| %>
+      <p>Titre du guide</p>
+      <%= f.input :title, label: false %>
+      <p>Sous-titre du guide</p>
+      <%= f.input :subtitle, label: false %>
+      <%= f.button :submit%>
+    <% end %>
+</div>
