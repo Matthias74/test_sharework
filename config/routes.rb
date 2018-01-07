@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'guides#new'
-  resources :guides, only: [ :create ] do
+  resources :guides, only: [ :create, :show ] do
     member do                             # member => restaurant id in URL
       get 'modules', to: "guides#modules"  # RestaurantsController#chef
     end

@@ -20,6 +20,10 @@ class GuidesController < ApplicationController
     @document = Document.new
   end
 
+  def show
+    @guide = Guide.find(params[:id])
+  end
+
   private
 
   def guide_params
