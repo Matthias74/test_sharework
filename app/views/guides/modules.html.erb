@@ -1,51 +1,65 @@
+<div class="page-title text-center"><p>Créer un guide - étape 2</p></div>
 <div class="module-banner">
-  <div class="guide">
-    <%= @guide.title %>
-  </div>
+  <div class="module-banner-content">
 
-  <div class="document-module">
-    <div class="document-module-button">
 
+
+    <div class="guide box-shadow">
+      <h3 class="padding-bottom-20">Informations du guide</h3>
+      <strong><p>Titre du guide:</p></strong>
+      <%= @guide.title.capitalize %>
+      <% if @guide.subtitle != "" %>
+        <p>Sous titre du guide</p>
+        <%= @guide.subtitle.capitalize %>
+      <% end %>
     </div>
-    <h3>Creation d'un document</h3>
-    <div class="document-module-form">
-      <%= simple_form_for([@document]) do |f|%>
+
+    <div class="document-module">
+      <div class="document-module-button box-shadow margin-top-30">
+        <h3 class="padding-bottom-20">Module document</h3>
+        <button type="button" class="main-cta">Ajouter un document</button>
+      </div>
+
+      <div class="document-module-form box-shadow margin-top-30">
+        <h3 class="padding-bottom-20">Creation d'un document</h3>
+        <%= simple_form_for([@document]) do |f|%>
+          <p>Titre</p>
+          <%= f.input :title, label: false %>
+          <p>description</p>
+          <%= f.input :description, label: false %>
+          <%= hidden_field_tag(:guide, @guide.id) %>
+          <%= f.input :file %>
+          <%= f.input :file_cache, as: :hidden %>
+          <%= f.button :submit, 'Créer Document' %>
+        <% end %>
+      </div>
+      <div class="document-modules">
+
+      </div>
+    </div>
+
+    <div class="text-modules box-shadow">
+      <% if @guide.texts.any? %>
+        <% @guide.texts.each do |text|%>
+        <p>
+          <%= text.title %>
+          <%= text.paragraph %>
+        </p>
+        <% end %>
+      <% end %>
+    </div>
+    <h3>Création d'un texte</h3>
+    <div class="text-module-form box-shadow">
+      <%= simple_form_for([@text]) do |f|%>
         <p>Titre</p>
         <%= f.input :title, label: false %>
-        <p>description</p>
-        <%= f.input :description, label: false %>
+        <p>Paragraphe</p>
+        <%= f.input :paragraph, label: false %>
         <%= hidden_field_tag(:guide, @guide.id) %>
-        <%= f.input :file %>
-        <%= f.input :file_cache, as: :hidden %>
-        <%= f.button :submit, 'Créer Document' %>
+        <%= f.button :submit, 'Créer texte' %>
       <% end %>
     </div>
-    <div class="document-modules">
 
-    </div>
+    <%= link_to "Voir le guide", guide_path(@guide), class: 'btn btn-primary' %>
   </div>
-
-  <div class="text-modules">
-    <% if @guide.texts.any? %>
-      <% @guide.texts.each do |text|%>
-      <p>
-        <%= text.title %>
-        <%= text.paragraph %>
-      </p>
-      <% end %>
-    <% end %>
-  </div>
-  <h3>Création d'un texte</h3>
-  <div class="text-module-form">
-    <%= simple_form_for([@text]) do |f|%>
-      <p>Titre</p>
-      <%= f.input :title, label: false %>
-      <p>Paragraphe</p>
-      <%= f.input :paragraph, label: false %>
-      <%= hidden_field_tag(:guide, @guide.id) %>
-      <%= f.button :submit, 'Créer texte' %>
-    <% end %>
-  </div>
-
-  <%= link_to "Voir le guide", guide_path(@guide), class: 'btn btn-primary' %>
 </div>

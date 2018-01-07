@@ -1,6 +1,6 @@
 
 <div class="new-guide-banner">
-  <div class="new-gide-banner-content">
+  <div class="new-gide-banner-content box-shadow">
     <h2 class='text-center'>Créer un guide</h2>
     <%= simple_form_for(@guide) do |f| %>
         <p>Titre du guide</p>
@@ -8,7 +8,7 @@
         <p>Sous-titre du guide</p>
         <%= f.input :subtitle, label: false %>
         <div class="text-center">
-        <%= f.button :submit, "Créer un guide", class: "new-guide-cta"%>
+        <%= f.button :submit, "Créer un guide", class: "main-cta"%>
         </div>
       <% end %>
   </div>
