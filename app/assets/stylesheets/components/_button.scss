@@ -1,0 +1,23 @@
+.new-guide-cta{
+  color:white;
+  padding: 15px 30px;
+  background: #09D774;
+  font-weight: bold;
+  text-decoration: none !important;
+  border-radius: 30px;
+  box-shadow: 2px 4px;
+  @media screen and (max-width: 768px) {
+      padding: 7px 12px;
+  }
+  @media screen and (max-width: 320px) {
+      padding: 11px 20px;
+      font-size: 12px;
+  }
+}
+
+.new-guide-cta:hover{
+  opacity: 1;
+  text-decoration: none;
+  color: white;
+  background: #09d774c2;
+}

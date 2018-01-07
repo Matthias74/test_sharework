@@ -1,1 +1,39 @@
-// Specific CSS for your home-page
+.new-guide-banner{
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.new-gide-banner-content{
+  width: 50%;
+  margin: auto;
+  box-shadow: 0 3px 30px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  padding: 3%;
+  border-radius: 3px;
+
+  h2{
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+  }
+
+  p{
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 736px) {
+      width: 100%;
+      background-color: white;
+      box-shadow: none;
+
+      h2{
+        padding-top: 42px;
+      }
+  }
+}
+
+#new_guide{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
