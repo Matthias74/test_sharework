@@ -1,14 +1,15 @@
-class TextsController < ApplicationController
+class DocumentsController < ApplicationController
+
   def create
     guide_id = params["guide"].to_i
     @guide = Guide.find_by(id:guide_id)
-    @text = Text.new(text_params)
-    @text.guide = @guide
+    @document = Document.new(document_params)
+    @document.guide = @guide
     #the following lne is mandatory: in case of error, if this line does't exist, it is impossuble to render the guides module
-    @document = Document.new
+    @text = Text.new
     ######
-    if @text.valid?
-      @text.save
+    if @document.valid?
+      @document.save
       redirect_to modules_guide_path(@guide)
     else
       render 'guides/modules'
@@ -17,8 +18,7 @@ class TextsController < ApplicationController
 
   private
 
-  def text_params
-    params.require(:text).permit(:title, :paragraph)
+  def document_params
+    params.require(:document).permit(:title, :description)
   end
-
 end

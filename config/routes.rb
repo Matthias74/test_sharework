@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-  get 'texts/create'
-
   root to: 'guides#new'
   resources :guides, only: [ :create ] do
     member do                             # member => restaurant id in URL
@@ -11,6 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :texts, only: [ :create ]
-
+  resources :documents, only: [ :create ]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

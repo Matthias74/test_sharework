@@ -17,11 +17,11 @@ class GuidesController < ApplicationController
   def modules
     @guide = Guide.find(params[:id])
     @text = Text.new
-    #code
+    @document = Document.new
   end
 
   private
-  
+
   def guide_params
     params.require(:guide).permit(:title, :subtitle)
   end

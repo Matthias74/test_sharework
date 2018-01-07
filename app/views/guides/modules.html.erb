@@ -2,6 +2,26 @@
   <%= @guide.title %>
 </div>
 
+<div class="document-module">
+  <div class="document-module-button">
+
+  </div>
+  <h3>Creation d'un document</h3>
+  <div class="document-module-form">
+    <%= simple_form_for([@document]) do |f|%>
+      <p>Titre</p>
+      <%= f.input :title, label: false %>
+      <p>description</p>
+      <%= f.input :description, label: false %>
+      <%= hidden_field_tag(:guide, @guide.id) %>
+      <%= f.button :submit, 'Créer Document' %>
+    <% end %>
+  </div>
+  <div class="document-modules">
+
+  </div>
+</div>
+
 <div class="text-modules">
   <% if @guide.texts.any? %>
     <% @guide.texts.each do |text|%>
@@ -12,7 +32,7 @@
     <% end %>
   <% end %>
 </div>
-
+<h3>Création d'un texte</h3>
 <div class="text-module-form">
   <%= simple_form_for([@text]) do |f|%>
     <p>Titre</p>
@@ -20,6 +40,6 @@
     <p>Paragraphe</p>
     <%= f.input :paragraph, label: false %>
     <%= hidden_field_tag(:guide, @guide.id) %>
-    <%= f.button :submit, 'toto' %>
+    <%= f.button :submit, 'Créer texte' %>
   <% end %>
 </div>
