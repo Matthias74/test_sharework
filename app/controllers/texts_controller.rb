@@ -1,4 +1,5 @@
 class TextsController < ApplicationController
+
   def create
     guide_id = params["guide"].to_i
     @guide = Guide.find_by(id:guide_id)
@@ -13,6 +14,14 @@ class TextsController < ApplicationController
     else
       render 'guides/modules'
     end
+  end
+
+  def sort
+    params["text"].each_with_index do |id, index|
+       Text.where(id: id).update_all(position: index + 1)
+    end
+
+    head :ok
   end
 
   private

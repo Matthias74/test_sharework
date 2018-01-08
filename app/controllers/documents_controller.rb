@@ -8,13 +8,21 @@ class DocumentsController < ApplicationController
     #the following lne is mandatory: in case of error, if this line does't exist, it is impossuble to render the guides module
     @text = Text.new
     ######
-    
+
     if @document.valid?
       @document.save
       redirect_to modules_guide_path(@guide)
     else
       render 'guides/modules'
     end
+  end
+
+  def sort
+    params["document"].each_with_index do |id, index|
+       Document.where(id: id).update_all(position: index + 1)
+    end
+
+    head :ok
   end
 
   private

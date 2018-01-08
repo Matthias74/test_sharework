@@ -4,4 +4,5 @@ class Document < ApplicationRecord
   validates :description, presence: true
   validates :file, presence: true
   mount_uploader :file, FileUploader
+  default_scope { order("position ASC") }
 end

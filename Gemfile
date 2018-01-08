@@ -18,6 +18,8 @@ gem 'webpacker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'acts_as_list', '~> 0.9.10'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
