@@ -18,10 +18,10 @@
 
       <% if @guide.documents.count >= 1 %>
         <% @guide.documents.each do |document| %>
-        <div class="document-module-instance box-shadow">
-          <h1>toto</h1>
-          <p><%= document.title %></p>
-          <%= document.description %>
+        <div class="document-module-instance box-shadow margin-top-30">
+          <p><strong>Titre du document:</strong> <%= document.title.capitalize %></strong></p>
+          <p><strong>Description du document:</strong> <%= document.description %></strong></p>
+          <p><strong>Fichier: </strong><%= document.file.filename %></strong></p>
         </div>
         <% end %>
       <% end %>
@@ -44,24 +44,24 @@
           <%= f.button :submit, 'Créer Document', class: "main-cta" %>
         <% end %>
       </div>
+
       <div class="document-modules">
 
       </div>
     </div>
 
-
-    <h3>Création d'un texte</h3>
-    <div class="text-modules box-shadow">
       <% if @guide.texts.any? %>
         <% @guide.texts.each do |text|%>
-        <p>
-          <%= text.title %>
-          <%= text.paragraph %>
-        </p>
+          <div class="text-modules box-shadow margin-top-30">
+            <p><strong><%= text.title.capitalize %></strong></p>
+            <p><%= text.paragraph %></p>
+
+          </div>
         <% end %>
       <% end %>
-    </div>
-    <div class="text-module-form box-shadow">
+
+    <div class="text-module-form box-shadow margin-top-30">
+      <h3>Création d'un texte</h3>
       <%= simple_form_for([@text]) do |f|%>
         <p>Titre</p>
         <%= f.input :title, label: false %>
