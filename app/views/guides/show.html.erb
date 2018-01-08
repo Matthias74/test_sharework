@@ -1,0 +1,33 @@
+<div class="guide text-center padding-bottom-20">
+  <h3 class="padding-bottom-20"><%= @guide.title.capitalize %></h3>
+  <% if @guide.subtitle != "" %>
+    <%= @guide.subtitle.capitalize %>
+  <% end %>
+</div>
+
+<div class="module-banner">
+  <div class="module-banner-content">
+    <div class="document-module">
+
+      <% if @guide.documents.count >= 1 %>
+        <% @guide.documents.each do |document| %>
+        <div class="document-module-instance box-shadow margin-top-30">
+          <p><strong>Titre du document:</strong> <%= document.title.capitalize %></strong></p>
+          <p><strong>Description du document:</strong> <%= document.description %></strong></p>
+          <p><strong>Fichier: </strong><%= document.file.filename %></strong></p>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+
+      <% if @guide.texts.any? %>
+        <% @guide.texts.each do |text|%>
+          <div class="text-modules box-shadow margin-top-30">
+            <p><strong><%= text.title.capitalize %></strong></p>
+            <p><%= text.paragraph %></p>
+          </div>
+        <% end %>
+      <% end %>
+
+  </div>
+</div>
