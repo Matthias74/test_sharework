@@ -47,15 +47,16 @@
       </div>
     </div>
 
+    <div id="texts">
       <% if @guide.texts.any? %>
         <% @guide.texts.each do |text|%>
           <div class="text-modules box-shadow margin-top-30">
             <p><strong><%= text.title.capitalize %></strong></p>
             <p><%= text.paragraph %></p>
-
           </div>
         <% end %>
       <% end %>
+    </div>
 
     <div class="text-module-form box-shadow margin-top-30 margin-bottom-30">
       <h3>Création d'un texte</h3>
