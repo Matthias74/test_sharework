@@ -13,15 +13,17 @@
   <div class="module-banner-content">
     <div class="document-module">
 
-      <% if @guide.documents.count >= 1 %>
-        <% @guide.documents.each do |document| %>
-        <div class="document-module-instance box-shadow margin-top-30">
-          <p><strong>Titre du document:</strong> <%= document.title.capitalize %></strong></p>
-          <p><strong>Description du document:</strong> <%= document.description %></strong></p>
-          <p><strong>Fichier: </strong><%= document.file.filename %></strong></p>
-        </div>
+      <div id="documents" data-url=" <%= sort_documents_path %>">
+        <% if @guide.documents.count >= 1 %>
+          <% @guide.documents.each do |document| %>
+          <div class="document-module-instance box-shadow margin-top-30" id="<%= dom_id(document)%>">
+            <p><strong>Titre du document:</strong> <%= document.title.capitalize %></strong></p>
+            <p><strong>Description du document:</strong> <%= document.description %></strong></p>
+            <p><strong>Fichier: </strong><%= document.file.filename %></strong></p>
+          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
 
       <div class="document-module-button box-shadow margin-top-30">
         <h3 class="padding-bottom-20">Module document</h3>
@@ -80,7 +82,7 @@
 
 <% content_for(:after_js) do %>
     <script>
-
+      // ading some style to the document creation module
       var path = window.location.pathname
 
       if(path != "/documents") {
@@ -93,8 +95,19 @@
       else {
       	$( ".document-module-form" ).show();
       }
-
+      // Make the texts sortable
       $("#texts").sortable({
+        update: function(e, ui){
+          Rails.ajax({
+            url: $(this).data("url"),
+            type: "PATCH",
+            data: $(this).sortable('serialize'),
+          });
+        }
+      });
+
+      // Make the documents sortable
+      $("#documents").sortable({
         update: function(e, ui){
           Rails.ajax({
             url: $(this).data("url"),

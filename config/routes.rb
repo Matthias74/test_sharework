@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       patch :sort
     end
   end
-  resources :documents, only: [ :create ]
+  resources :documents, only: [ :create ] do
+    collection do
+      patch :sort
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
