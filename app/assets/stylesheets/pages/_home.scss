@@ -9,22 +9,12 @@
   width: 50%;
   margin: auto;
 
-  h2{
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
-  }
-
-  p{
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
-  }
-
   @media screen and (max-width: 736px) {
       width: 100%;
       background-color: white;
       box-shadow: none;
 
-      h2{
+      h3{
         padding-top: 42px;
       }
   }
@@ -33,18 +23,4 @@
 #new_guide{
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.box-shadow{
-  box-shadow: 0 3px 30px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  padding: 3%;
-  border-radius: 3px;
-}
-
-.margin-top-30{
-  margin-top: 30px;
-}
-
-.padding-bottom-20{
-  padding-bottom: 20px;
 }

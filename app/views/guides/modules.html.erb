@@ -1,19 +1,16 @@
 <div class="page-title text-center"><p>Créer un guide - étape 2</p></div>
+<div class="guide text-center padding-bottom-20">
+  <h3 class="padding-bottom-20">Informations du guide</h3>
+  <strong><p>Titre du guide:</p></strong>
+  <%= @guide.title.capitalize %>
+  <% if @guide.subtitle != "" %>
+    <p>Sous titre du guide</p>
+    <%= @guide.subtitle.capitalize %>
+  <% end %>
+</div>
+
 <div class="module-banner">
   <div class="module-banner-content">
-
-
-
-    <div class="guide box-shadow">
-      <h3 class="padding-bottom-20">Informations du guide</h3>
-      <strong><p>Titre du guide:</p></strong>
-      <%= @guide.title.capitalize %>
-      <% if @guide.subtitle != "" %>
-        <p>Sous titre du guide</p>
-        <%= @guide.subtitle.capitalize %>
-      <% end %>
-    </div>
-
     <div class="document-module">
 
       <% if @guide.documents.count >= 1 %>
@@ -60,19 +57,23 @@
         <% end %>
       <% end %>
 
-    <div class="text-module-form box-shadow margin-top-30">
+    <div class="text-module-form box-shadow margin-top-30 margin-bottom-30">
       <h3>Création d'un texte</h3>
+      <div class="padding-bottom-20">
       <%= simple_form_for([@text]) do |f|%>
         <p>Titre</p>
         <%= f.input :title, label: false %>
         <p>Paragraphe</p>
         <%= f.input :paragraph, label: false %>
         <%= hidden_field_tag(:guide, @guide.id) %>
-        <%= f.button :submit, 'Créer texte' %>
+      </div>
+        <%= f.button :submit, 'Créer texte', class: "main-cta" %>
       <% end %>
     </div>
+    <div class="padding-top-20 text-center">
+      <%= link_to "Voir le guide", guide_path(@guide), class: 'blue-cta' %>
+    </div>
 
-    <%= link_to "Voir le guide", guide_path(@guide), class: 'btn btn-primary' %>
   </div>
 </div>
 
