@@ -47,10 +47,10 @@
       </div>
     </div>
 
-    <div id="texts">
+    <div id="texts" data-url=" <%= sort_texts_path %> ">
       <% if @guide.texts.any? %>
         <% @guide.texts.each do |text|%>
-          <div class="text-modules box-shadow margin-top-30">
+          <div class="text-modules box-shadow margin-top-30 " id="<%= dom_id(text)%>">
             <p><strong><%= text.title.capitalize %></strong></p>
             <p><%= text.paragraph %></p>
           </div>
@@ -94,6 +94,14 @@
       	$( ".document-module-form" ).show();
       }
 
-      $("#texts").sortable();
+      $("#texts").sortable({
+        update: function(e, ui){
+          Rails.ajax({
+            url: $(this).data("url"),
+            type: "PATCH",
+            data: $(this).sortable('serialize'),
+          });
+        }
+      });
     </script>
 <% end %>

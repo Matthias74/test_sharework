@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :texts, only: [ :create ]
+  resources :texts, only: [ :create ] do
+    collection do
+      patch :sort
+    end
+  end
   resources :documents, only: [ :create ]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
