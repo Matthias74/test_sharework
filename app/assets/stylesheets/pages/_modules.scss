@@ -1,16 +1,24 @@
+.guide{
+  border-bottom-width:1px;
+   border-bottom-color:#7777779e;
+   border-bottom-style: solid;
+   width: 100%;
+}
+
 .module-banner{
-  background-color: white;
   padding-top: 25px;
-  height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  display:block;
 }
 
 .module-banner-content{
   width: 50%;
-  background-color: white;
   margin: auto;
   padding-bottom: 70px;
   @media screen and (max-width: 768px) {
-      width: 100%;
+      width: 99%;
   }
 }
 
@@ -23,4 +31,8 @@
   p{
     padding-top: 15px;
   }
+}
+
+#record{
+  height: 50px;
 }

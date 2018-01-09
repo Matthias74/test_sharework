@@ -17,6 +17,7 @@
         <% if @guide.documents.count >= 1 %>
           <% @guide.documents.each do |document| %>
           <div class="document-module-instance box-shadow margin-top-30" id="<%= dom_id(document)%>">
+            <div class="document-logo text-center padding-bottom-20"><%= image_tag "record.svg", id: "record" %></div>
             <p><strong>Titre du document:</strong> <%= document.title.capitalize %></strong></p>
             <p><strong>Description du document:</strong> <%= document.description %></strong></p>
             <p><strong>Fichier: </strong><%= document.file.filename %></strong></p>
